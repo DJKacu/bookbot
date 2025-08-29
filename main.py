@@ -1,8 +1,18 @@
-def get_book_text():
-    with open(r"books/frankenstein.txt") as f:
-        file_contents = f.read()
-    return file_contents
+from stats import count, sortu_sortu
+def report():
+    A = sortu_sortu()
+    for i in A:
+        if i["char"].isalpha():
+            print(f"{i["char"]}: {i["num"]}")
+
+
 def main():
-    print(get_book_text())
+    print("============ BOOKBOT ============")
+    print("Analyzing book found at books/frankenstein.txt...")
+    print("----------- Word Count ----------")
+    count()
+    print("--------- Character Count -------")
+    report()
+    print("============= END ===============")
 
 main()
