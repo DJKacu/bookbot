@@ -1,17 +1,17 @@
-def get_book_text():
-    with open(r"books/frankenstein.txt") as f:
+def get_book_text(x):
+    with open(x) as f:
         file_contents = f.read()
         return file_contents
 
-def count():
+def count(x):
     num_words = 0
-    words = get_book_text().split()
+    words = get_book_text(x).split()
     for i in words:
         num_words += 1
     return print(f"Found {num_words} total words")
 
-def organize():
-    words = get_book_text().lower()
+def organize(x):
+    words = get_book_text(x).lower()
     dict = {}
     for i in words:
         if i not in dict:
@@ -23,9 +23,9 @@ def organize():
 def sort_on(items):
     return items["num"]
 
-def sortu_sortu():
+def sortu_sortu(x):
     do_sortu = []
-    char_dict = organize()
+    char_dict = organize(x)
     for i in char_dict:
         data = {}
         data["char"] = i
@@ -33,3 +33,9 @@ def sortu_sortu():
         do_sortu.append(data)
     do_sortu.sort(reverse=True, key=sort_on)
     return do_sortu
+
+def report(x):
+    A = sortu_sortu(x)
+    for i in A:
+        if i["char"].isalpha():
+            print(f"{i["char"]}: {i["num"]}")

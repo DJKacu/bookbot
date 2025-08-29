@@ -1,18 +1,20 @@
-from stats import count, sortu_sortu
-def report():
-    A = sortu_sortu()
-    for i in A:
-        if i["char"].isalpha():
-            print(f"{i["char"]}: {i["num"]}")
-
+import sys
+from stats import count, sortu_sortu, report
 
 def main():
+    try:
+        sys.argv[1]
+    except IndexError:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    x = sys.argv[1]
     print("============ BOOKBOT ============")
-    print("Analyzing book found at books/frankenstein.txt...")
+    print(f"Analyzing book found at {x}")
     print("----------- Word Count ----------")
-    count()
+    count(x)
     print("--------- Character Count -------")
-    report()
+    report(x)
     print("============= END ===============")
 
-main()
+if __name__ == "__main__":
+    main()
